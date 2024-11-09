@@ -1,6 +1,7 @@
-require 'main'
+require './main'
 
-Rspec.describe Hello do
+RSpec.describe 'hello world test' do
   it 'returns Hello World' do
-    result = Hello
-    expect(result).to_eq("Hello World")
+    expect(hello).to eq("Hello World")
+  end
+end
