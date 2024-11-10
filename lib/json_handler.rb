@@ -1,8 +1,4 @@
-require 'optparse'
 require 'json'
-
-parser = OptionParser.new
-
 
 file = "./test_data.json"
 
@@ -11,7 +7,6 @@ data = {
   "points": 5,
   "local": "earth"
 }
-
 
 if File.exist?(file)
   data = File.read(file)
@@ -23,16 +18,3 @@ else
     file.write(serialized_data)
   end
 end
-
-def hello
-  "Hello World"
-end
-
-
-parser.on('-h', 'Run Hello') do |value|
-  puts hello
-end
-
-
-
-parser.parse!
