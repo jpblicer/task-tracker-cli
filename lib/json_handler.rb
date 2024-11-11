@@ -38,5 +38,19 @@ class JsonHandler
     tasks = read_tasks
     tasks << serializer(task)
     save_tasks(tasks)
-  end    
+  end
+  
+  def self.remove_task(id)
+    tasks = read_tasks
+    task = tasks.find { |task| task['id'] == id.to_i }
+
+    if task
+      puts "Removing #{task['description']}..."
+      tasks.delete(task)
+      save_tasks(tasks)
+      puts "Removed succesfully"
+    else
+      puts "No task found with ID #{id}."
+    end
+  end
 end

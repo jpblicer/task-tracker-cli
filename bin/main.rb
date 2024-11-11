@@ -15,4 +15,9 @@ parser.on('-a DESCRIPTION', 'Add Task') do |description|
   add_task(description)
 end
 
+parser.on('-r ID', 'Remove Task') do |id|
+  JsonHandler.remove_task(id)
+end
+
+
 parser.parse!
