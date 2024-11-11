@@ -24,6 +24,11 @@ class JsonHandler
       'updated_at' => task.updated_at
     }
   end
+
+  def self.next_id
+    tasks = read_tasks
+    tasks.empty? ? 1 : tasks.max_by { |task| task['id'] }['id'] + 1
+  end
   
   def self.save_tasks(tasks)
     File.write(FILE_PATH, JSON.pretty_generate(tasks))
