@@ -1,15 +1,18 @@
 require 'optparse'
 
+require_relative'../lib/task'
 require_relative '../lib/json_handler'
 
 parser = OptionParser.new
 
-def hello
-  "Hello World"
+def add_task(description)
+  task = Task.create_task(description)
+  JsonHandler.append_task(task)
+  puts "Added New Task: #{task.description}"
 end
 
-parser.on('-h', 'Run Hello') do |value|
-  puts hello
+parser.on('-a DESCRIPTION', 'Add Task') do |description|
+  add_task(description)
 end
 
 parser.parse!

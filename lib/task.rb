@@ -15,16 +15,14 @@ class Task
     @updated_at = Time.now
   end
 
-  def add(description)
-    added_task = Task.new(description)
-    # store to JSON
-  end
-
   private
 
   def self.next_id
     @@last_id += 1
   end
 
+  def self.create_task(description)
+    Task.new(description)
+  end
   
 end

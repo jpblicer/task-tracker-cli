@@ -1,20 +1,37 @@
 require 'json'
 
-file = "./test_data.json"
+class JsonHandler
+  FILE_PATH = "./tasks.json"
 
-data = {
-  "name": "test",
-  "points": 5,
-  "local": "earth"
-}
+  private
 
-if File.exist?(file)
-  data = File.read(file)
-  deserialized_data = JSON.parse(data)
-  puts deserialized_data
-else
-  serialized_data = JSON.pretty_generate(data)
-  File.open(file, "w") do |file|
-    file.write(serialized_data)
+  def self.read_tasks
+    if File.exist?(FILE_PATH)
+      file = File.read(FILE_PATH)
+      tasks_data = JSON.parse(file)
+    else
+      tasks_data = [] 
+    end
+    tasks_data
   end
+
+  def self.serializer(task)
+    {
+      'id' => task.id,
+      'description' => task.description,
+      'status' => task.status,
+      'created_at' => task.created_at,
+      'updated_at' => task.updated_at
+    }
+  end
+  
+  def self.save_tasks(tasks)
+    File.write(FILE_PATH, JSON.pretty_generate(tasks))
+  end
+
+  def self.append_task(task)
+    tasks = read_tasks
+    tasks << serializer(task)
+    save_tasks(tasks)
+  end    
 end
