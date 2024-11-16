@@ -19,5 +19,10 @@ parser.on('-r ID', 'Remove Task') do |id|
   JsonHandler.remove_task(id)
 end
 
+parser.on('-la', 'List All Tasks') do |id|
+  JsonHandler.list_tasks
+end
+
+
 
 parser.parse!

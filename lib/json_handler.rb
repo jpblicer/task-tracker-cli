@@ -53,4 +53,11 @@ class JsonHandler
       puts "No task found with ID #{id}."
     end
   end
+
+  def self.list_tasks
+    tasks = read_tasks
+    tasks.each do |task|
+      puts "#{task['id']} : #{task['description']}"
+    end
+  end
 end
