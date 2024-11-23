@@ -60,4 +60,12 @@ class JsonHandler
       puts "#{task['id']} : #{task['description']}"
     end
   end
+
+  
+  def self.list_todo_tasks
+    tasks = read_tasks.select(task['description'] == "TODO")
+    tasks.each do |task|
+      puts "#{task['id']} : #{task['description']}"
+    end
+  end
 end

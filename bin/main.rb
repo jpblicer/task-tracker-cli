@@ -23,6 +23,9 @@ parser.on('-la', 'List All Tasks') do |id|
   JsonHandler.list_tasks
 end
 
+parser.on('-lat', 'List All Tasks Marked "TODO"') do |id|
+  JsonHandler.list_tasks
+end
 
 
 parser.parse!
