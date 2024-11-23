@@ -83,4 +83,17 @@ class JsonHandler
     end
   end
 
+  def self.update_task_done(id)
+    tasks = read_tasks
+    task = tasks.find { |task| task['id'] == id.to_i }
+
+    if task
+      puts "Marking #{task['description']} as Done..."
+      task['status'] = "DONE"
+      save_tasks(tasks)
+      puts "Updated status to #{task['status']} succesfully"
+    else
+      puts "No task found with ID #{id}."
+    end
+  end
 end

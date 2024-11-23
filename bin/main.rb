@@ -31,4 +31,8 @@ parser.on('-p ID', 'Mark Task as "IN-PROGRESS"') do |id|
   JsonHandler.update_task_in_progress(id)
 end
 
+parser.on('-d ID', 'Mark Task as "IN-PROGRESS"') do |id|
+  JsonHandler.update_task_done(id)
+end
+
 parser.parse!
