@@ -62,10 +62,10 @@ class JsonHandler
   end
 
   
-  def self.list_todo_tasks
-    tasks = read_tasks.select(task['description'] == "TODO")
+  def self.list_in_progress_tasks
+    tasks = read_tasks.select { |task| task['status'] == "IN-PROGRESS"} 
     tasks.each do |task|
-      puts "#{task['id']} : #{task['description']}"
+      puts "#{task['id']} : #{task['description']} #{task['status']}"
     end
   end
 end
