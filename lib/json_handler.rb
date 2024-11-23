@@ -68,4 +68,19 @@ class JsonHandler
       puts "#{task['id']} : #{task['description']} #{task['status']}"
     end
   end
+
+  def self.update_task_in_progress(id)
+    tasks = read_tasks
+    task = tasks.find { |task| task['id'] == id.to_i }
+
+    if task
+      puts "Marking #{task['description']} as IN PROGRESS..."
+      task['status'] = "IN-PROGRESS"
+      save_tasks(tasks)
+      puts "Updated status to #{task['status']} succesfully"
+    else
+      puts "No task found with ID #{id}."
+    end
+  end
+
 end

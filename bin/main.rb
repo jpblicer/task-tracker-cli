@@ -19,13 +19,16 @@ parser.on('-r ID', 'Remove Task') do |id|
   JsonHandler.remove_task(id)
 end
 
-parser.on('-la', 'List All Tasks') do |id|
+parser.on('-l', 'List All Tasks') do |id|
   JsonHandler.list_tasks
 end
 
-parser.on('-lat', 'List All Tasks Marked "TODO"') do |id|
+parser.on('-i', 'List All Tasks Marked "IN-PROGRESS"') do |id|
   JsonHandler.list_in_progress_tasks
 end
 
+parser.on('-p ID', 'Mark Task as "IN-PROGRESS"') do |id|
+  JsonHandler.update_task_in_progress(id)
+end
 
 parser.parse!
