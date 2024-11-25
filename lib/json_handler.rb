@@ -69,6 +69,13 @@ class JsonHandler
     end
   end
 
+  def self.list_incomplete_tasks
+    tasks = read_tasks.select { |task| task['status'] == "IN-PROGRESS" || task['status'] == "TODO" } 
+    tasks.each do |task|
+      puts "#{task['id']} : #{task['description']} #{task['status']}"
+    end
+  end
+
   def self.update_task_in_progress(id)
     tasks = read_tasks
     task = tasks.find { |task| task['id'] == id.to_i }

@@ -27,11 +27,15 @@ parser.on('-i', 'List All Tasks Marked "IN-PROGRESS"') do |id|
   JsonHandler.list_in_progress_tasks
 end
 
+parser.on('-m', 'List Incomplete Tasks') do |id|
+  JsonHandler.list_incomplete_tasks
+end
+
 parser.on('-p ID', 'Mark Task as "IN-PROGRESS"') do |id|
   JsonHandler.update_task_in_progress(id)
 end
 
-parser.on('-d ID', 'Mark Task as "IN-PROGRESS"') do |id|
+parser.on('-d ID', 'Mark Task as "DONE"') do |id|
   JsonHandler.update_task_done(id)
 end
 
