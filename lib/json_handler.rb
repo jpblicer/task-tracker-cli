@@ -56,24 +56,18 @@ class JsonHandler
 
   def self.list_tasks
     tasks = read_tasks
-    tasks.each do |task|
-      puts "#{task['id']} : #{task['description']}"
-    end
+    print_tasks(tasks)
   end
 
   
   def self.list_in_progress_tasks
     tasks = read_tasks.select { |task| task['status'] == "IN-PROGRESS"} 
-    tasks.each do |task|
-      puts "#{task['id']} : #{task['description']} #{task['status']}"
-    end
+    print_tasks(tasks)
   end
 
   def self.list_incomplete_tasks
     tasks = read_tasks.select { |task| task['status'] == "IN-PROGRESS" || task['status'] == "TODO" } 
-    tasks.each do |task|
-      puts "#{task['id']} : #{task['description']} #{task['status']}"
-    end
+    print_tasks(tasks)
   end
 
   def self.update_task_in_progress(id)
@@ -101,6 +95,16 @@ class JsonHandler
       puts "Updated status to #{task['status']} succesfully"
     else
       puts "No task found with ID #{id}."
+    end
+  end
+
+  private
+
+  def self.print_tasks(tasks)
+    if tasks.empty?
+      puts "No Tasks"
+    else
+      tasks.each { |task| puts "#{task['id']} ) #{task['status']} : #{task['description']}"}
     end
   end
 end
