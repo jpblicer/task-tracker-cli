@@ -48,7 +48,7 @@ class JsonHandler
       puts "Removing #{task['description']}..."
       tasks.delete(task)
       save_tasks(tasks)
-      puts "Removed succesfully"
+      puts "Removed successfully"
     else
       puts "No task found with ID #{id}."
     end
@@ -78,7 +78,7 @@ class JsonHandler
       puts "Marking #{task['description']} as IN PROGRESS..."
       task['status'] = "IN-PROGRESS"
       save_tasks(tasks)
-      puts "Updated status to #{task['status']} succesfully"
+      puts "Updated status to #{task['status']} successfully"
     else
       puts "No task found with ID #{id}."
     end
@@ -92,7 +92,7 @@ class JsonHandler
       puts "Marking #{task['description']} as Done..."
       task['status'] = "DONE"
       save_tasks(tasks)
-      puts "Updated status to #{task['status']} succesfully"
+      puts "Updated status to #{task['status']} successfully"
     else
       puts "No task found with ID #{id}."
     end
